@@ -78,7 +78,6 @@ except ImportError:
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-
 def basic_preprocessing(initial_word: str, to_lower: bool = True, punctuation_to_keep: list = [],
                         substitute_words_dict: dict = None):
     """ Basic preprocessing. Here we assume that the input (word) is a
@@ -202,7 +201,11 @@ class G2P(object):
             if " " in initial_word_complex:
                 raise ValueError("Found space inside an entry of words.txt.\nLine: {}\nWord: {}.".format(i, initial_word_complex))
             # Step 2: Pre-processing and digit handling
-            initial_word_complex = basic_preprocessing(initial_word_complex, substitute_words_dict=self.substitute_words_dict, punctuation_to_keep=self.punc_to_keep)
+            initial_word_complex = basic_preprocessing(
+                initial_word_complex,
+                substitute_words_dict=self.substitute_words_dict,
+                punctuation_to_keep=self.punc_to_keep
+            )
             # Step 3: Get rid of latin characters (if any). TODO: add more complex rules for english.
             edited_word_complex = self.convert_latin_chars(initial_word_complex)
             # The processing may have created more than one words (e.g. 102.4 -> εκατό δύο κόμμα τέσσερα)

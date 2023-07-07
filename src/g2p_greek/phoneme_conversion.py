@@ -104,8 +104,7 @@ def _sanity_check(phonemes: list):
 
 
 def _get_nchars(word, n=2):
-    return [''.join(word[i:i+n]) for i, c in enumerate(word[:-2])]
-
+    return [''.join(word[i:i+n]) for i, c in enumerate(word[:-n+1])]
 
 def _check_till_dipthongs(word):
     word_couples = _get_nchars(word, n=2)
