@@ -261,8 +261,7 @@ class G2P(object):
                         elif edited_sub_word in self.punc_to_keep:
                             continue
                         else:
-                            warnings.warn("An unseen character has been observed while "
-                                          "creating the lexicon: {}.".format(edited_sub_word))
+                            warnings.warn("An unseen character has been observed while creating the lexicon: {}.".format(edited_sub_word))
                             continue
                     if self.lexicon is None:
                         _, current_phones = convert_word(edited_sub_word)  # Get word and phonemes
