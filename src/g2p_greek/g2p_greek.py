@@ -225,7 +225,7 @@ class G2P(object):
                                 # Use only the transliteration
                                 out += self.lexicon.get_word_phonemes(word=edited_w, initial_word=None) + " "
                         out = re.sub(r"\s+", " ", out).strip()
-                    else:                            
+                    else:
                         # If the number can be expressed in just one word then keep it.
                         # E.g. 1936 -> "χιλια εννιακοσια τριανταεξι" : more than 1 word so we won't keep the number
                         #      But 10 -> "δεκα" : only one word so we will keep the number 10

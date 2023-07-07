@@ -58,7 +58,6 @@ def convert_word(word: str) -> Tuple[str, list]:
         except KeyError:
             warnings.warn("Character {} could not be converted.".format(word), RuntimeWarning)
             return word, []
-
     # word, current_phonemes = _check_single_chars(word)
     # # Since ψ and ξ match to two phonemes we will replace them explicitly
     # new_word = re.sub("ψ", "πσ", word)
