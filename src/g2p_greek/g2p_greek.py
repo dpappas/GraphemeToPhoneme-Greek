@@ -209,7 +209,10 @@ class G2P(object):
             # Step 3: Get rid of latin characters (if any). TODO: add more complex rules for english.
             edited_word_complex = self.convert_latin_chars(initial_word_complex)
             # The processing may have created more than one words (e.g. 102.4 -> εκατό δύο κόμμα τέσσερα)
-            for initial_sub_word, edited_sub_word in zip(initial_word_complex.split(), edited_word_complex.split()):
+            for initial_sub_word, edited_sub_word in zip(
+                    initial_word_complex.split(),
+                    edited_word_complex.split()
+            ):
                 edited_sub_word = edited_sub_word.lower().strip()
                 # Convert numbers to words
                 if edited_sub_word.isdigit():
@@ -267,7 +270,10 @@ class G2P(object):
                         _, current_phones = convert_word(edited_sub_word)  # Get word and phonemes
                         out = initial_sub_word + " " + " ".join(current_phones) + "\n"  # append new line at the end
                     else:
-                        out = self.lexicon.get_word_phonemes(edited_sub_word, initial_word=initial_sub_word)
+                        out = self.lexicon.get_word_phonemes(
+                            edited_sub_word,
+                            initial_word=initial_sub_word
+                        )
                 out = out.strip()
                 if not out.endswith("\n"): out += "\n"
                 out_lines.append(out)
