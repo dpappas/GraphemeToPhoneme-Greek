@@ -103,14 +103,12 @@ def _sanity_check(phonemes: list):
     return new_phonemes
 
 
-def _get_word_couples(word):
-    # Return character couples from the input word
-    # e.g. from the word "hello" to ("he", "el", "ll", "lo")
-    return [c + word[i+1] for i, c in enumerate(word[:-1])]
+def _get_nchars(word, n=2):
+    return [''.join(word[i:i+n]) for i, c in enumerate(word[:-2])]
 
 
 def _check_till_dipthongs(word):
-    word_couples = _get_word_couples(word)
+    word_couples = _get_nchars(word, n=2)
     phons = []
     counter = 0
     while counter < len(word_couples):
